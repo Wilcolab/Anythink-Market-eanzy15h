@@ -94,6 +94,72 @@ describe('Arithmetic', function () {
     });
 
 // TODO: Challenge #1
+describe('Subtraction', function () {
+    it('subtracts two equal positive integers to zero', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=21&operand2=21')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 0 });
+                done();
+            });
+    });
+    it('subtracts zero from an integer', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=42&operand2=0')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 42 });
+                done();
+            });
+    });
+    it('subtracts a negative integer from a positive integer', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=21&operand2=-21')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 42 });
+                done();
+            });
+    });
+    it('subtracts two negative integers', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=-21&operand2=-21')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 0 });
+                done();
+            });
+    });
+    it('subtracts an integer from a floating point number', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=2.5&operand2=5')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: -2.5 });
+                done();
+            });
+    });
+    it('subtracts supporting exponential notation resulting in zero', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=1.2e-5&operand2=1.2e-5')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 0 });
+                done();
+            });
+    });
+    it('subtracts two small decimals', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=.5&operand2=0.25')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: 0.25 });
+                done();
+            });
+    });
+    it('subtracts producing a negative floating point result', function (done) {
+        request.get('/arithmetic?operation=subtract&operand1=-2.5&operand2=0.5')
+            .expect(200)
+            .end(function (err, res) {
+                expect(res.body).to.eql({ result: -3 });
+                done();
+            });
+    });
+});
  
 
     describe('Multiplication', function () {
