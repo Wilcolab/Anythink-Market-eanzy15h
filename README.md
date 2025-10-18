@@ -1,4 +1,49 @@
-# Python Server
+Node.js Server
+
+This project contains a simple Node.js (Express) server that manages a task list. It provides two routes for adding and retrieving tasks and can be run locally or in Docker. The GET route can be accessed directly in a browser.
+
+## Project Structure
+
+- `node-server/src/index.js`: Express server implementation with two routes for managing tasks.
+- `node-server/package.json`: Node.js project metadata, dependencies and npm scripts.
+- `node-server/Dockerfile`: Docker image definition for the Node.js server.
+- `docker-compose.yml`: Defines services and how to run them together (includes the Node.js service).
+
+## Getting Started
+
+Run with Docker (recommended):
+
+- Build and start containers:
+
+  ```shell
+  docker compose up
+  ```
+
+- The Node.js server will be available at http://localhost:8001 (adjust port if your Docker config uses a different one).
+
+Run locally with Node.js:
+
+- From the repository root:
+
+  ```shell
+  cd node-server
+  npm install
+  npm start
+  ```
+
+- Open your browser to http://localhost:8001.
+
+## API Routes
+
+- `POST /tasks` — Add a task. Send JSON body like:
+  ```json
+  { "task": "Buy milk" }
+  ```
+  Returns the created task or the updated list depending on implementation.
+
+- `GET /tasks` — Retrieve the task list. This route returns JSON and can be opened directly in a browser (e.g., http://localhost:8001/tasks).
+
+Note: If your app binds to a different port, use that port in the browser URL. If running behind Docker, ensure ports are published in `docker-compose.yml` or the `docker run` command. Python Server
 
 This project contains a FastAPI server implemented in Python. It provides two routes for managing a task list.
 
