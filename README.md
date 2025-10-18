@@ -1,4 +1,46 @@
-# Python Server
+Node.js Server
+
+This project contains an Express-based Node.js server. It provides two routes for managing a simple task list (add a task and retrieve tasks).
+
+## Project Structure
+
+The project has the following files and directories:
+
+- `node-server/src/index.js`: Implementation of the Express server with two routes: one to add a task to an in-memory list and one to retrieve the list.
+- `node-server/package.json`: Node dependencies and scripts (start, dev, test, etc.).
+- `node-server/Dockerfile`: Dockerfile used to build a Docker image for the Node.js server (installs dependencies and runs the server).
+- `docker-compose.yml`: Defines and runs the multi-container application, including the Node.js service.
+
+## Getting Started
+
+To run the Node.js server using Docker:
+
+- Build and start the Docker containers:
+
+  ```shell
+  docker compose up
+  ```
+
+  This command will build the Docker image for the Node.js server and start the containers defined in `docker-compose.yml`.
+
+- For local development without Docker:
+
+  ```shell
+  cd node-server
+  npm install
+  npm start
+  ```
+
+- The Node.js server listens on port 3000 by default (adjustable via environment variables or `docker-compose.yml`).
+
+## API Routes
+
+The Node.js server provides the following API routes:
+
+- `POST /tasks`: Adds a task to the task list. The request body should contain the task details (JSON).
+- `GET /tasks`: Retrieves the task list (JSON).
+
+Replace or extend these notes if your implementation uses a different framework, ports, or file layout. Python Server
 
 This project contains a FastAPI server implemented in Python. It provides two routes for managing a task list.
 
